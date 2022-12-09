@@ -71,7 +71,11 @@ const Login = () => {
             <label className="text-gray-600 text-sm">Email address</label>
             <input
               type="text"
-              // style={errors.email?.message ? { border: "1px solid red" } : {}}
+              style={
+                errors.email?.message
+                  ? { border: "1px solid rgb(220 38 38)" }
+                  : {}
+              }
               className={`p-2 bg-gray-100 rounded ${
                 errors.email?.message ? "border-rose-500" : ""
               }`}
@@ -85,6 +89,11 @@ const Login = () => {
             <label className="text-gray-600 text-sm">Password</label>
             <input
               type="password"
+              style={
+                errors.email?.message
+                  ? { border: "1px solid rgb(220 38 38)" }
+                  : {}
+              }
               className="p-2 bg-gray-100 rounded"
               {...register("password")}
             />
