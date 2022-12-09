@@ -10,7 +10,10 @@ export interface ForgotPassword {
 
 const schema = yup
   .object({
-    email: yup.string().required().email("Invalid email"),
+    email: yup
+      .string()
+      .required("Email is a required field")
+      .email("Invalid email"),
   })
   .required();
 
@@ -26,7 +29,7 @@ const ForgotPassword = () => {
   const navigate = useNavigate();
 
   const onSubmit = handleSubmit(async (values) => {
-    navigate("/");
+    navigate("/login");
   });
 
   return (

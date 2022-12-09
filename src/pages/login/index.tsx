@@ -11,13 +11,19 @@ import * as yup from "yup";
 
 const schema = yup
   .object({
-    email: yup.string().required().email("Invalid email"),
-    password: yup.string().required().min(8, "Too Short!").max(50, "Too Long!"),
+    email: yup
+      .string()
+      .required("Email address is a required field")
+      .email("Invalid email"),
+    password: yup
+      .string()
+      .required("Password is a required field")
+      .min(8, "Too Short!")
+      .max(50, "Too Long!"),
   })
   .required();
 
 const Login = () => {
-
   const {
     register,
     handleSubmit,
@@ -65,7 +71,10 @@ const Login = () => {
             <label className="text-gray-600 text-sm">Email address</label>
             <input
               type="text"
-              className="p-2 bg-gray-100 rounded"
+              // style={errors.email?.message ? { border: "1px solid red" } : {}}
+              className={`p-2 bg-gray-100 rounded ${
+                errors.email?.message ? "border-rose-500" : ""
+              }`}
               {...register("email")}
             />
             <p className="text-red-600">{errors.email?.message}</p>
@@ -83,7 +92,6 @@ const Login = () => {
           </div>
 
           {/* Forgot Password */}
-
           <div className="flex flex-col gap-1">
             <Link to="/forgotpassword" className="text-blue-600">
               Forgot password?

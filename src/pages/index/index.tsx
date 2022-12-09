@@ -6,11 +6,14 @@ import * as yup from "yup";
 
 const schema = yup
   .object({
-    firstName: yup.string().required(),
-    lastName: yup.string().required(),
-    email: yup.string().required().email("Invalid email"),
-    phoneNumber: yup.string().required(),
-    message: yup.string().required(),
+    firstName: yup.string().required("First Name is a required field"),
+    lastName: yup.string().required("Last Name is a required field"),
+    email: yup
+      .string()
+      .required("Email address is a required field")
+      .email("Invalid email"),
+    phoneNumber: yup.string().required("Phone number is a required field"),
+    message: yup.string().required("Message is a required field"),
   })
   .required();
 const Index = () => {
